@@ -23,12 +23,32 @@ import java.util.Set;
 import static ru.geekbrains.client.MessagePatterns.AUTH_FAIL_RESPONSE;
 import static ru.geekbrains.client.MessagePatterns.AUTH_SUCCESS_RESPONSE;
 
-@Service // Для создания bean данного класса
-// Параметры передаются автоматически
+@Service
 public class ChatServer {
 
     private AuthService authService;
     private Map<String, ClientHandler> clientHandlerMap = Collections.synchronizedMap(new HashMap<>());
+
+    public static void main(String[] args) {
+        AuthService authService;
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/network_chat",
+                    "root", "root");
+            UserRepository userRepository = new UserRepository(conn);
+            if (userRepository.getAllUsers().size() == 0) {
+                userRepository.insert(new User(-1, "ivan", "123"));
+                userRepository.insert(new User(-1, "petr", "345"));
+                userRepository.insert(new User(-1, "julia", "789"));
+            }
+            authService = new AuthServiceJdbcImpl(userRepository);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        ChatServer chatServer = new ChatServer(authService);
+        chatServer.start(7777);
+    }
 
     public ChatServer(AuthService authService) {
         this.authService = authService;

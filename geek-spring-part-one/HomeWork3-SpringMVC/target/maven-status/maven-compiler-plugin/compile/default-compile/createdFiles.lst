@@ -1,0 +1,6 @@
+ru\geekbrains\AppConfig.class
+ru\geekbrains\WebInitializer.class
+ru\geekbrains\persist\Product.class
+ru\geekbrains\persist\ProductRepository.class
+test\Main.class
+ru\geekbrains\controller\ProductController.class

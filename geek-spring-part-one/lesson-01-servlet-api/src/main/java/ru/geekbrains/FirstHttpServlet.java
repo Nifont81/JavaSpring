@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/first-http-servlet/*")
-public class FirstHttpServlet extends HttpServlet { // Полная поддержка протокола HTTP
+public class FirstHttpServlet extends HttpServlet {
 
     private UserRepository userRepository;
 
     @Override
     public void init() throws ServletException {
-        userRepository = (UserRepository) getServletContext().getAttribute("userRepository");
+        this.userRepository = (UserRepository) getServletContext().getAttribute("userRepository");
     }
 
     @Override

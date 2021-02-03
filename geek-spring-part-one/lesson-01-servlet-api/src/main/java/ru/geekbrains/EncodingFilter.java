@@ -15,16 +15,15 @@ public class EncodingFilter implements Filter {
     }
 
     @Override
-    public void destroy() {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
 
+        chain.doFilter(request, response);
     }
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        // filterChain - с помощью него мы можен пропустить этот запрос куда-то дальше, до сервлета
-        // либо можно запрос остановить.
-        servletResponse.setContentType("text/html");
-        servletResponse.setCharacterEncoding("UTF-8");
-        filterChain.doFilter(servletRequest, servletResponse);
+    public void destroy() {
+
     }
 }
