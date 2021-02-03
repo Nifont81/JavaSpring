@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/user/*")
 public class UserInfoServlet extends HttpServlet { // Полная поддержка протокола HTTP
@@ -46,7 +45,7 @@ public class UserInfoServlet extends HttpServlet { // Полная поддер�
         if (user == null) {
             resp.getWriter().println("<p>Пользователь не найден!</p>");
         } else {
-            resp.getWriter().println("<p>Имя : " + user.getUsername() + "</p>");
+            resp.getWriter().println("<p> Имя : " + user.getUsername() + "</p>");
             resp.getWriter().println("<p>ID  : " + id + "</p>");
         }
 

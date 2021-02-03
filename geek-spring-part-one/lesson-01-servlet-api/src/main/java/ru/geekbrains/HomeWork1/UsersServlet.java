@@ -33,7 +33,9 @@ public class UsersServlet extends HttpServlet { // Полная поддержк
         resp.getWriter().println("<table style=\"width:100%\"");
         resp.getWriter().println("<tr><th>Пользователи</th></tr>");
         for (User user: users) {
-            resp.getWriter().println("<tr><td>"+user.getUsername()+"</td></tr>");
+            String href = "<a href="+req.getContextPath()+"/user/"+user.getId()+">";
+            resp.getWriter().println(href);
+            resp.getWriter().println("<tr><td>"+href+user.getUsername()+"</td></tr>");
         }
         resp.getWriter().println("</table>");
     }
