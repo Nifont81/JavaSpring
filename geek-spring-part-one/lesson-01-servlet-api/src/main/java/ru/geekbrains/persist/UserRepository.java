@@ -13,8 +13,7 @@ public class UserRepository {
     private AtomicLong identity = new AtomicLong(0);
 
     public List<User> findAll() {
-
-        return new ArrayList<>(userMap.values()); // userMap.values() возвращает коллекцию
+        return new ArrayList<>(userMap.values());
     }
 
     public User findById(long id) {
@@ -34,4 +33,5 @@ public class UserRepository {
     public void delete(long id) {
         userMap.remove(id);
     }
+
 }

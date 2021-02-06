@@ -9,14 +9,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository // ~ @Service ~@Component
+@Repository
 public class UserRepository {
 
     private final Connection conn;
 
-    @Autowired // При создании бина для внедрения зависимостей использовать этот конструктор
+    @Autowired
     public UserRepository(DataSource ds) throws SQLException {
-        //
         this(ds.getConnection());
     }
 

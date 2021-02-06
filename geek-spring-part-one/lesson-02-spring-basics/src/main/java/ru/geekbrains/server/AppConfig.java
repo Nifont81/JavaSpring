@@ -8,17 +8,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan("ru.geekbrains.server") // Добавляет аннотацию по компонентам
-
+@ComponentScan("ru.geekbrains.server")
 public class AppConfig {
 
     @Bean
     public DataSource dataSource() {
-        // Эта аннотация полностью аналогична в файле spring-config.xml
-        DriverManagerDataSource ds = new DriverManagerDataSource("jdbc:mysql://localhost:3306/chat","root","powers");
-        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        DriverManagerDataSource ds = new DriverManagerDataSource("jdbc:mysql://localhost:3306/network_chat", "root", "root");
+        ds.setDriverClassName("com.mysql.jdbc.Driver");
         return ds;
-
-        // Здесь можно всё что угодно дописать, в т. ч. создать Connection и др.
     }
 }

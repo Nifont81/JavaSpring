@@ -7,8 +7,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lesson-01-servlet-api" />
+        <module name="lesson-03-spring-mvc" />
+        <module name="HomeWork-03-spring-mvc" />
+        <module name="HomeWork3-SpringMVC" />
         <module name="lesson-02-spring-basics" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="HomeWork-03-spring-mvc" target="11" />
+      <module name="lesson-03-spring-mvc (1)" target="1.5" />
+      <module name="MyTest" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

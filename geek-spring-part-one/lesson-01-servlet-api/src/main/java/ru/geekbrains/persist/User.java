@@ -3,6 +3,7 @@ package ru.geekbrains.persist;
 public class User {
 
     private Long id;
+
     private String username;
 
     public User(String username) {

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/HomeWork-03-spring-mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/HomeWork3-SpringMVC" />
     <file type="web" url="file://$PROJECT_DIR$/lesson-01-servlet-api" />
+    <file type="web" url="file://$PROJECT_DIR$/lesson-03-spring-mvc" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -10,8 +13,13 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/HomeWork-03-spring-mvc/pom.xml" />
+      </set>
+    </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="15" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
