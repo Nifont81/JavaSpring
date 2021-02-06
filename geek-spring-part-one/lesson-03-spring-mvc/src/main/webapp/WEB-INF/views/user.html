@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>User application</title>
+    <title>EShop application</title>
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">User</a>
+    <a class="navbar-brand" href="#">EShop</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <a class="btn btn-primary" th:href="@{/user/{id} (id=-1)}" >Add User</a>
+            <a class="btn btn-primary" th:href="@{/user/new}">Добавить</a>
         </div>
 
         <div class="col-12">
@@ -52,8 +52,10 @@
                     <th th:text="${user.id}" scope="row">1</th>
                     <td th:text="${user.username}">Alex</td>
                     <td>
-                        <a class="btn btn-success" th:href="@{/user/{id} (id = ${user.id})}"><i class="fas fa-edit"></i></a>
-                        <a class="btn btn-danger" th:href="@{/user/{id}/delete (id = ${user.id})}"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn btn-success" th:href="@{/user/{id}(id = ${user.id})}"><i class="fas fa-edit"></i></a>
+                        <form class="d-inline" th:method="delete" th:action="@{/user/{id}(id = ${user.id})}">
+                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </form>
                     </td>
                 </tr>
                 </tbody>

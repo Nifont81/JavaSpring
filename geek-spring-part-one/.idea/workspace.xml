@@ -34,17 +34,21 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="/Volumes/AlexUSB/Android_SDK" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/HomeWork3-SpringMVC/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/homework4-spring-boot/src/main/java/ru/geekbrains" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RecentsManager">
@@ -52,14 +56,17 @@
       <recent name="ru.geekbrains.server" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\java\ru\geekbrains" />
+      <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\resources\static" />
+      <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\resources\templates" />
       <recent name="D:\IdeaProjects\geek-spring-part-one\HomeWork3-SpringMVC\src\main\java" />
       <recent name="D:\IdeaProjects\geek-spring-part-one\HomeWork3-SpringMVC\src\main" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\geek-spring-part-one" />
-      <recent name="$PROJECT_DIR$/lesson-03-spring-mvc/src/main/webapp/WEB-INF/views" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Maven.HomeWork3">
+  <component name="RunManager" selected="Spring Boot.Homework4SpringBootApplication">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -87,15 +94,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,6 +193,13 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <configuration name="Homework4SpringBootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="homework4-spring-boot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ru.geekbrains.Homework4SpringBootApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG">
       <option name="TEST_OBJECT" value="CLASS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -211,6 +223,7 @@
       <item itemvalue="Maven.lesson-01-servlet-api [clean,install...]" />
       <item itemvalue="Maven.lesson-03-spring-mvc [clean,install...]" />
       <item itemvalue="Maven.HomeWork3" />
+      <item itemvalue="Spring Boot.Homework4SpringBootApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -232,6 +245,11 @@
       <workItem from="1612253910143" duration="8000" />
       <workItem from="1612263416903" duration="10091000" />
       <workItem from="1612359338231" duration="11071000" />
+      <workItem from="1612554268570" duration="1620000" />
+      <workItem from="1612559329850" duration="623000" />
+      <workItem from="1612595895082" duration="4326000" />
+      <workItem from="1612600378796" duration="7468000" />
+      <workItem from="1612624996039" duration="1787000" />
     </task>
     <servers />
   </component>

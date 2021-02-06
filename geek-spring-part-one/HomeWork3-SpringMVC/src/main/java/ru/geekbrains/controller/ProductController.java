@@ -5,12 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/products")
@@ -35,28 +35,22 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public String editPage(@PathVariable("id") Long id, Model model) {
-        Product product ;
-        if (id!=-1) {
-            logger.info("Edit page for id {} requested", id);
+        Product product;
+        logger.info("Edit page for id {} requested", id);
 
-            model.addAttribute("product", productRepository.findById(id));
-            model.addAttribute("title", "Edit Product");
+        model.addAttribute("product", productRepository.findById(id));
+        model.addAttribute("title", "Edit Product");
 
-        } else {
-
-            product = new Product("","",0);
-            product.setId(-1L);
-
-            model.addAttribute("product", product);
-            model.addAttribute("title", "New Product");
-            logger.info("New product id = ", id);
-        }
         return "product_form";
     }
 
     @PostMapping("/update")
-    public String update(Product product) {
+    public String update(@Valid Product product, BindingResult result) {
         logger.info("Update endpoint requested");
+
+        if (result.hasErrors()) {
+            return "product_form";
+        }
 
         if (product.getId() != -1) {
             logger.info("Updating Product with id {}", product.getId());
@@ -69,17 +63,29 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @GetMapping("/new")
-    public String create() {
-        // TODO
-        return null;
+//        if (!user.getPassword().equals(user.getMatchingPassword())) {
+//            result.rejectValue("password", "", "Password not matching");
+//            return "user_form";
+//        }
+
+     @GetMapping("/new")
+    public String create(Model model) {
+        Product product = new Product("", "", 0);
+        product.setId(-1L);
+
+        model.addAttribute("product", product);
+        model.addAttribute("title", "Создание нового товара");
+        logger.info("Создание нового товара");
+
+        return "product_form";
     }
 
-    @GetMapping("/{id}/delete")
+    @DeleteMapping("/{id}")
     public String remove(Model model, @PathVariable("id") Long id) {
-
-        model.addAttribute("product", productRepository.findById(id));
+        Product product = productRepository.findById(id);
+        model.addAttribute("product", product);
         productRepository.delete(id);
+        logger.info("Продукт " + product.getName() + " удален");
 
         return "delete";
     }

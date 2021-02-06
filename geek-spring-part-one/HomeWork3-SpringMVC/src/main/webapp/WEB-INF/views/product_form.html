@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title th:text="${title}">Shop application</title>
+    <title th:text="${title}">Магазин</title>
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Product</a>
+    <a class="navbar-brand" href="#">Товары</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,13 +26,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">List</a>
+                <a class="nav-link" href="#">Список</a>
             </li>
         </ul>
     </div>
 </nav>
 
-<h1 th:text="${title}">Product</h1>
+<h1 th:text="${title}">Продукт</h1>
 
 <div class="container">
     <div class="row py-2">
@@ -41,25 +41,29 @@
                 <input type="hidden" th:field="*{id}" id="id" name="id">
 
                 <div class="form-group">
-                    <label>Name</label>
+                    <label>Товар</label>
                     <input type="text" th:field="*{name}" class="form-control" id="name" name="name"
-                           placeholder="Enter Name">
+                           placeholder="Введите наименование товара">
+                    <p class="text-danger" th:if="${#fields.hasErrors('name')}">Название должно быть от 3 до 40 символов!</p>
+<!--                    th:errors="*{name}" стандартное сообщение об ошибке-->
                 </div>
 
                 <div class="form-group">
-                    <label>Description</label>
+                    <label>Описание</label>
                     <input type="text" th:field="*{description}" class="form-control" id="description" name="description"
-                           placeholder="Enter Description">
+                           placeholder="Введите описание товара">
                 </div>
 
                 <div class="form-group">
-                    <label>Price</label>
+                    <label>Цена</label>
                     <input type="text" th:field="*{price}" class="form-control" id="price" name="price"
-                           placeholder="Enter Price">
+                           placeholder="Введите цену">
+                    <p class="text-danger" th:if="${#fields.hasErrors('price')}">Минимальная цена 10 рублей!</p>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Принять</button>
             </form>
+
         </div>
     </div>
 </div>

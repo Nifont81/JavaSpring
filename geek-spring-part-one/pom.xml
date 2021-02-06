@@ -10,8 +10,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
         <spring.version>5.3.3</spring.version>
     </properties>
 
@@ -19,8 +19,6 @@
         <module>lesson-01-servlet-api</module>
         <module>lesson-02-spring-basics</module>
         <module>lesson-03-spring-mvc</module>
-        <module>HomeWork-03-spring-mvc</module>
-        <module>HomeWork-03-spring-mvc</module>
         <module>HomeWork3-SpringMVC</module>
     </modules>
 

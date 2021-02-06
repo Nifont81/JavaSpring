@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title>Shop application</title>
+    <title>Магазин</title>
 </head>
 
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Products</a>
+    <a class="navbar-brand" href="#">Товары</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">List</a>
+                <a class="nav-link" href="#">Список</a>
             </li>
         </ul>
     </div>
@@ -35,7 +35,7 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <a class="btn btn-primary" th:href="@{/products/{id} (id=-1)}" >Add Products</a>
+            <a class="btn btn-primary" th:href="@{/products/new}" >Добавить продукт</a>
         </div>
 
         <div class="col-12">
@@ -43,11 +43,11 @@
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
+                    <th scope="col">Наименование</th>
+                    <th scope="col">Описание</th>
+                    <th scope="col">Цена</th>
 
-                    <th scope="col">Actions</th>
+                    <th scope="col">Действия</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -58,7 +58,12 @@
                     <td th:text="${product.price}">100</td>
                     <td>
                         <a class="btn btn-success" th:href="@{/products/{id} (id = ${product.id})}"><i class="fas fa-edit"></i></a>
-                        <a class="btn btn-danger" th:href="@{/products/{id}/delete (id = ${product.id})}"><i class="far fa-trash-alt"></i></a>
+
+<!--                        Фиктивная форма для отправки запроса "delete" (POST)-->
+                        <form class="d-inline" th:method="delete" th:action="@{/products/{id} (id = ${product.id})}" >
+                            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                        </form>
+
                     </td>
                 </tr>
                 </tbody>
