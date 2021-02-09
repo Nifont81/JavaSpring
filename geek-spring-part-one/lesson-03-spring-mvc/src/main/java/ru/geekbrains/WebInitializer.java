@@ -15,13 +15,11 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        // Указываем какой класс будет основным классом конфигурации нашего приложения
         return new Class[] {AppConfig.class};
     }
 
     @Override
     protected String[] getServletMappings() {
-        // Это означает, что сервлет привязан к корню нашего Приложения.
         return new String[] {"/"};
     }
 
@@ -32,7 +30,6 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");
         characterEncodingFilter.setForceEncoding(true);
-
         // Создание фильтра, который добавляет поддержку HTTP-методов (например
         // таких, как PUT), необходимых для REST API
         HiddenHttpMethodFilter httpMethodFilter = new HiddenHttpMethodFilter();

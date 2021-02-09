@@ -34,7 +34,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
         characterEncodingFilter.setForceEncoding(true);
 
         // Создание фильтра, который добавляет поддержку HTTP-методов (например
-        // таких, как PUT), необходимых для REST API
+        // таких, как PUT), необходимых для REST API (+Delete POST)
         HiddenHttpMethodFilter httpMethodFilter = new HiddenHttpMethodFilter();
         return new Filter[]{characterEncodingFilter, httpMethodFilter};
     }
