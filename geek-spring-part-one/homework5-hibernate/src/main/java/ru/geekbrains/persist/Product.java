@@ -1,12 +1,12 @@
 package ru.geekbrains.persist;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="products")
 @NamedQueries({
-        @NamedQuery(name = "findByName", query = "from Product p where p.name = :name"),
-        @NamedQuery(name = "findById", query = "from Product p where p.id = :id"),
+        @NamedQuery(name = "findPrByName", query = "from Product p where p.name = :name"),
         @NamedQuery(name = "allProducts", query = "from Product")
 })
 public class Product {
@@ -14,6 +14,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToMany
+    @JoinTable (
+            name = "clients_products",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "client_id")
+    )
+    private List<Client> clients;
 
     @Column(length = 128, unique = true, nullable = false)
     private String name;
@@ -74,6 +82,14 @@ public class Product {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
     @Override

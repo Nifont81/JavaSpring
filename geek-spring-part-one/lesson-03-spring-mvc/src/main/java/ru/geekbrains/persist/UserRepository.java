@@ -12,6 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class UserRepository {
 
+    // Identity Map
     private Map<Long, User> userMap = new ConcurrentHashMap<>();
 
     private AtomicLong identity = new AtomicLong(0);
