@@ -51,18 +51,18 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="settings.editor.selected.configurable" value="spring.boot" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="ru.geekbrains.server" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\geek-spring-part-one" />
       <recent name="D:\IdeaProjects\geek-spring-part-one\homework5-hibernate\src\main\java\ru\geekbrains" />
       <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\java\ru\geekbrains" />
       <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\resources\static" />
       <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\resources\templates" />
-      <recent name="D:\IdeaProjects\geek-spring-part-one\HomeWork3-SpringMVC\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\IdeaProjects\geek-spring-part-one" />
@@ -72,7 +72,7 @@
       <recent name="ru.geekbrains" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main06">
+  <component name="RunManager" selected="Spring Boot.Homework4SpringBootApplication">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -282,8 +282,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main06" />
         <item itemvalue="Application.Main05" />
+        <item itemvalue="Application.Main06" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.TestLambda" />
@@ -317,11 +317,21 @@
       <workItem from="1613147054796" duration="841000" />
       <workItem from="1613153430707" duration="2511000" />
       <workItem from="1613216928419" duration="20729000" />
-      <workItem from="1613321066761" duration="11076000" />
+      <workItem from="1613321066761" duration="11683000" />
+      <workItem from="1613411944633" duration="3723000" />
+      <workItem from="1613544128119" duration="2703000" />
+      <workItem from="1613634833096" duration="13037000" />
+      <workItem from="1613650932005" duration="10555000" />
+      <workItem from="1613678547350" duration="7717000" />
+      <workItem from="1613717099458" duration="717000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -7,10 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.geekbrains.persist.Product;
-import ru.geekbrains.persist.ProductRepository;
+import ru.geekbrains.service.ProductDTO;
+import ru.geekbrains.service.ProductService;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/products")
@@ -18,48 +19,60 @@ public class ProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
-    private ProductRepository productRepository;
+    private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping
-    public String listPage(Model model) {
+    public String listPage(Model model, @RequestParam Optional<String> nameFilter) {
         logger.info("Страница списка запрошена");
 
-        model.addAttribute("products", productRepository.findAll());
+        if (nameFilter.isPresent() && !nameFilter.get().isBlank()) {
+            logger.info("Фильтрация по имени запрошена");
+            model.addAttribute("products", productService.findProductByNameLike(nameFilter.get()));
+        } else {
+            model.addAttribute("products", productService.findAll());
+        }
+        return "products";
+    }
+
+    @GetMapping("/priceFilter")
+    public String listPage(Model model, @RequestParam Optional<Integer> minPrice, @RequestParam Optional<Integer> maxPrice) {
+        logger.info("Фильтрация по диапазону цен запрошена");
+
+        if (minPrice.isPresent() && maxPrice.isPresent()) {
+            model.addAttribute("products",
+                    productService.findProductByPriceIn(minPrice.get(), maxPrice.get()));
+        } else {
+            model.addAttribute("products", productService.findAll());
+        }
         return "products";
     }
 
     @GetMapping("/{id}")
     public String editPage(@PathVariable("id") Long id, Model model) {
-        Product product;
         logger.info("Страница редактирования id {} запрошена", id);
 
-        model.addAttribute("product", productRepository.findById(id));
+        model.addAttribute("product", productService.findById(id));
         model.addAttribute("title", "Edit Product");
 
         return "product_form";
     }
 
     @PostMapping("/update")
-    public String update(@Valid Product product, BindingResult result) {
+    public String update(@Valid ProductDTO productDTO, BindingResult result) {
         logger.info("Запрос обновления продукта");
 
         if (result.hasErrors()) {
             return "product_form";
         }
 
-        if (product.getId() != -1) {
-            logger.info("Обновлен продукт с  id {}", product.getId());
-            productRepository.update(product);
+        logger.info("Обновлен продукт DTO:" + productDTO);
+        productService.save(productDTO);
 
-        } else {
-            logger.info("Создан новый продукт");
-            productRepository.insert(product);
-        }
         return "redirect:/products";
     }
 
@@ -68,12 +81,12 @@ public class ProductController {
 //            return "user_form";
 //        }
 
-     @GetMapping("/new")
+    @GetMapping("/new")
     public String create(Model model) {
-        Product product = new Product("", "", 0);
-        product.setId(-1L);
+        ProductDTO productDTO = new ProductDTO("", "", 10);
+        productDTO.setId(-1L);
 
-        model.addAttribute("product", product);
+        model.addAttribute("product", productDTO);
         model.addAttribute("title", "Создание нового товара");
         logger.info("Создание нового товара");
 
@@ -82,10 +95,11 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public String remove(Model model, @PathVariable("id") Long id) {
-        Product product = productRepository.findById(id);
-        model.addAttribute("product", product);
-        productRepository.delete(id);
-        logger.info("Продукт " + product.getName() + " удален");
+        ProductDTO productDTO = productService.findById(id)
+                .orElseThrow(NotFoundExeption::new);
+        model.addAttribute("product", productDTO);
+        productService.delete(id);
+        logger.info("Продукт " + productDTO.getName() + " удален");
 
         return "delete";
     }

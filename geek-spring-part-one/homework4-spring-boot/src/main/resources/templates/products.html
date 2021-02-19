@@ -35,8 +35,49 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <a class="btn btn-primary" th:href="@{/products/new}" >Добавить продукт</a>
+            <a class="btn btn-primary" th:href="@{/products/new}">Добавить продукт</a>
         </div>
+
+        <!--        Форма для фильтра по наименовани товара-->
+        <div class="col-12  mt-3">
+            <form class="form-inline" th:method="get">
+
+                <div class="form-group mb-2 mr-2">
+                    <!--                    mx-sm-3-->
+                    <label for="nameFilter" class="sr-only">Фильтр по наименованию</label>
+                    <input type="text" class="form-control" id="nameFilter" th:value="${param.nameFilter}"
+                           name="nameFilter" placeholder="Фильтр по наименованию">
+                </div>
+
+                <!--                th:value="${param.nameFilter}   чтоб не терялся фильтр при обновлении страницы-->
+
+                <button type="submit" class="btn btn-primary mb-2">Применить</button>
+            </form>
+        </div>
+
+        <!--        Форма для фильтра по диапазону цен-->
+        <div class="col-12  mt-3">
+            <form th:action="@{/products/priceFilter}" th:method="get">
+                <div class="form-row align-items-center">
+                    <div class="col-auto">
+                        <input type="text" class="form-control mb-2" id="minPrice" name="minPrice"
+                               th:value="${param.minPrice}" placeholder=" Минимальная цена">
+                        <!--                        th:value="${param.minPrice}-->
+                    </div>
+
+                    <div class="col-auto">
+                        <input type="text" class="form-control mb-2" id="maxPrice" name="maxPrice"
+                               th:value="${param.maxPrice}" placeholder=" Максимальная цена">
+                        <!--                        th:value="${param.maxPrice}"-->
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-2">Применить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
 
         <div class="col-12">
             <table class="table table-bordered my-2">
@@ -51,16 +92,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="product : ${products}" >
+                <tr th:each="product : ${products}">
                     <th th:text="${product.id}" scope="row">1</th>
                     <td th:text="${product.name}">Product1</td>
                     <td th:text="${product.description}">Description1</td>
                     <td th:text="${product.price}">100</td>
                     <td>
-                        <a class="btn btn-success" th:href="@{/products/{id} (id = ${product.id})}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-success" th:href="@{/products/{id} (id = ${product.id})}"><i
+                                class="fas fa-edit"></i></a>
 
-<!--                        Фиктивная форма для отправки запроса "delete" (POST)-->
-                        <form class="d-inline" th:method="delete" th:action="@{/products/{id} (id = ${product.id})}" >
+                        <!--                        Фиктивная форма для отправки запроса "delete" (POST)-->
+                        <form class="d-inline" th:method="delete" th:action="@{/products/{id} (id = ${product.id})}">
                             <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                         </form>
 
