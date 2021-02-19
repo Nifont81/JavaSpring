@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class ProductRepository {
+public class ClientRepository {
 
     private final EntityManagerFactory emFactory;
 
-    public ProductRepository(EntityManagerFactory emFactory) {
+    public ClientRepository(EntityManagerFactory emFactory) {
         this.emFactory = emFactory;
     }
 
@@ -19,26 +19,25 @@ public class ProductRepository {
     }
 
     /**
-     * Возвращает список товаров, купленных клиентом
-     * @param id клиента
-     * @return Список товаров
+     * Выдает список клиентов, купивших товар
+     * @param id товара
+     * @return Список клиентов
      */
-    public List<Product> findProductsByClientId(long id) {
+    public List<Client> findProductsByClientId(long id) {
         EntityManager em = emFactory.createEntityManager();
 
-        List list = em.createNativeQuery("SELECT * FROM products as p WHERE p.id IN " +
-                "(SELECT product_id FROM clients_products WHERE client_id=:clientId)",Product.class)
-                .setParameter("clientId",id)
+        List list = em.createNativeQuery("SELECT * from clients as c where c.id IN (" +
+                "    SELECT client_id FROM  clients_products where product_id=:productId)",Client.class)
+                .setParameter("productId",id)
                 .getResultList();
-
         em.close();
 
         return list;
     }
 
-    public List<Product> findAll() {
+    public List<Client> findAll() {
         EntityManager em = emFactory.createEntityManager();
-        List<Product> list = em.createNamedQuery("allProducts", Product.class).getResultList();
+        List<Client> list = em.createNamedQuery("allClients", Client.class).getResultList();
         em.close();
         return list;
 
@@ -46,29 +45,30 @@ public class ProductRepository {
 //                em -> em.createNamedQuery("allProducts", Product.class)).getResultList();
     }
 
-    public Product findById(long id) {
-        return executeForEntityManager(em -> em.find(Product.class, id));
+    public Client findById(long id) {
+        return executeForEntityManager(em -> em.find(Client.class, id));
     }
 
-    public void insert(Product product) {
-        executeInTransaction(em -> em.persist(product));
+    public void insert(Client client) {
+        executeInTransaction(em -> em.persist(client));
     }
 
-    public void update(Product product) {
-        executeInTransaction(em -> em.merge(product));
+    public void update(Client client) {
+        executeInTransaction(em -> em.merge(client));
     }
 
     public void delete(long id) {
         executeInTransaction(em -> {
-            Product productDel = em.find(Product.class, id);
-            if (productDel != null) em.remove(productDel);
+            Client clientDel = em.find(Client.class, id);
+            if (clientDel != null) em.remove(clientDel);
         });
     }
 
     private <R> R executeForEntityManager(Function<EntityManager, R> function) {
         EntityManager em = emFactory.createEntityManager();
         try {
-            return function.apply(em);
+            R client = function.apply(em);
+            return client;
         } finally {
             if (em != null) {
                 em.close();
