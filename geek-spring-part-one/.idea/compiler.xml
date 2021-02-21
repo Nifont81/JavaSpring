@@ -13,6 +13,7 @@
         <module name="HomeWork-03-spring-mvc" />
         <module name="HomeWork3-SpringMVC" />
         <module name="lesson-02-spring-basics" />
+        <module name="lesson-06-spring-hibernate" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,6 +25,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="homework4-spring-boot" options="-parameters" />
+      <module name="lesson-06-spring-hibernate" options="-parameters" />
     </option>
   </component>
 </project>

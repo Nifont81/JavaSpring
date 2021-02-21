@@ -3,17 +3,17 @@ package ru.geekbrains.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import ru.geekbrains.persist.Product;
+import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.service.ProductDTO;
 import ru.geekbrains.service.ProductService;
 
 import javax.validation.Valid;
-import java.util.Optional;
+import java.math.BigDecimal;
 
 @Controller
 @RequestMapping("/products")
@@ -29,19 +29,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public String listPage(Model model,
-                           @RequestParam("nameFilter") Optional<String> nameFilter,
-                           @RequestParam("minPrice") Optional<Double> minPrice,
-                           @RequestParam("maxPrice") Optional<Double> maxPrice) {
-
+    public String listPage(Model model) {
         logger.info("Страница списка запрошена");
 
-        model.addAttribute("products", productService.findWithFilter(
-                nameFilter.filter(s -> !s.isBlank()).orElse(null),
-                minPrice.orElse(null),
-                maxPrice.orElse(null))
-        );
-
+        model.addAttribute("products", productService.findAll());
         return "products";
     }
 
@@ -49,9 +40,7 @@ public class ProductController {
     public String editPage(@PathVariable("id") Long id, Model model) {
         logger.info("Страница редактирования id {} запрошена", id);
 
-        model.addAttribute("product", productService.findById(id)
-        .orElseThrow(NotFoundException::new));
-
+        model.addAttribute("product", productService.findById(id));
         model.addAttribute("title", "Edit Product");
 
         return "product_form";
@@ -65,9 +54,14 @@ public class ProductController {
             return "product_form";
         }
 
-        logger.info("Обновлен продукт DTO:" + productDTO);
-        productService.save(productDTO);
+        if (productDTO.getId() != -1) {
+            logger.info("Обновлен продукт с  id {}", productDTO.getId());
+            productService.update(productDTO);
 
+        } else {
+            logger.info("Создан новый продукт DTO:" + productDTO);
+            productService.insert(productDTO);
+        }
         return "redirect:/products";
     }
 
@@ -78,7 +72,7 @@ public class ProductController {
 
     @GetMapping("/new")
     public String create(Model model) {
-        ProductDTO productDTO = new ProductDTO("", "", 10);
+        ProductDTO productDTO = new ProductDTO("", "", 100.3);
         productDTO.setId(-1L);
 
         model.addAttribute("product", productDTO);
@@ -90,19 +84,11 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     public String remove(Model model, @PathVariable("id") Long id) {
-        ProductDTO productDTO = productService.findById(id)
-                .orElseThrow(NotFoundException::new);
+        ProductDTO productDTO = productService.findById(id);
         model.addAttribute("product", productDTO);
         productService.delete(id);
         logger.info("Продукт " + productDTO.getName() + " удален");
 
         return "delete";
-    }
-
-    @ExceptionHandler
-    public ModelAndView notFoundExceptionHandler(NotFoundException ex) {
-        ModelAndView mav = new ModelAndView("not_found");
-        mav.setStatus(HttpStatus.NOT_FOUND);
-        return mav;
     }
 }

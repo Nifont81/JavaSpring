@@ -12,9 +12,11 @@ public interface ProductService {
 
     Optional<ProductDTO> findById(long id);
 
-    List<ProductDTO> findProductByNameLike(String nameFilter);
+//    List<ProductDTO> findProductByNameLike(String nameFilter);
+//
+//    List<ProductDTO> findProductByPriceIn(double minPrice, double maxPrice);
 
-    List<ProductDTO> findProductByPriceIn(double minPrice, double maxPrice);
+    List<ProductDTO> findWithFilter(String nameFilter, Double minPrice, Double maxPrice);
 
     void save(ProductDTO product);
 

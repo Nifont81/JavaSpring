@@ -12,6 +12,7 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/homework4-spring-boot/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson-06-spring-hibernate/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
