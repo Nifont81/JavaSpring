@@ -5,6 +5,7 @@ import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
 
 import javax.persistence.EntityManagerFactory;
+import java.math.BigDecimal;
 
 public class Main05 {
     public static void main(String[] args) {
@@ -14,10 +15,10 @@ public class Main05 {
 
         ProductRepository pr = new ProductRepository(emFactory);
 
-        Product product = new Product("Процессор i7 3","Intel i7-9700K 3", 25000);
+        Product product = new Product("Процессор i7 3","Intel i7-9700K 3", new BigDecimal(26000));
         //pr.insert(product);
 
-        product = new Product("Мышь a4","Мышь Genius", 500);
+        product = new Product("Мышь a4","Мышь Genius", new BigDecimal(100.3));
         product.setId(3L);
         pr.update(product);
 

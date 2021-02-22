@@ -1,6 +1,7 @@
 package ru.geekbrains.persist;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -30,12 +31,12 @@ public class Product {
     private String description;
 
     @Column(nullable = false)
-    private int price;
+    private BigDecimal price;
 
     @Transient // Не храним в БД
     private String comment;
 
-    public Product(String name, String description, int price) {
+    public Product(String name, String description, BigDecimal price) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -68,11 +69,11 @@ public class Product {
         this.description = description;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

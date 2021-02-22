@@ -1,42 +1,41 @@
-package ru.geekbrains.persist;
+package ru.geekbrains.service;
 
-import ru.geekbrains.service.ProductDTO;
+import ru.geekbrains.persist.Product;
 
-import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "products")
-public class Product {
+// Data Transfer Object
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductDTO {
+
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Size(min = 3, max = 100)
     private String name;
 
-    @Column
     private String description;
 
-    @Column(nullable = false)
+    @NotNull
+    @Min(10)
     private double price;
-    //private BigDecimal price;
+//    private BigDecimal price;
 
-    public Product() {
+    public ProductDTO() {
     }
 
-    //    public Product(String name, String description, BigDecimal price) {
-    public Product(String name, String description, double price) {
+    public ProductDTO(String name, String description, double price) {
         this.name = name;
         this.description = description;
         this.price = price;
     }
 
-    public Product(ProductDTO productDTO) {
-        this.id = productDTO.getId();
-        this.name = productDTO.getName();
-        this.description = productDTO.getDescription();
-        this.price = productDTO.getPrice();
+    public ProductDTO(Product product) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.description = product.getDescription();
+        this.price = product.getPrice();
     }
 
     public Long getId() {
@@ -63,19 +62,23 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
 //    public BigDecimal getPrice() {
+//        return price;
+//    }
+    public double getPrice() {
         return price;
     }
 
 //    public void setPrice(BigDecimal price) {
+//        this.price = price;
+//    }
     public void setPrice(double price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "ProductDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +

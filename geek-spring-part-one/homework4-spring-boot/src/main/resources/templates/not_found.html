@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-    <title th:text="${title}">Магазин</title>
+    <title>Магазин</title>
 </head>
 
 <body>
@@ -32,38 +32,10 @@
     </div>
 </nav>
 
-<h1 th:text="${title}">Продукт</h1>
-
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <form th:action="@{/products/update}" th:method="post" th:object="${product}">
-                <input type="hidden" th:field="*{id}" id="id" name="id">
-
-                <div class="form-group">
-                    <label>Товар</label>
-                    <input type="text" th:field="*{name}" class="form-control" id="name" name="name"
-                           placeholder="Введите наименование товара">
-                    <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
-<!--                    th:errors="*{name}" сообщение об ошибке-->
-                </div>
-
-                <div class="form-group">
-                    <label>Описание</label>
-                    <input type="text" th:field="*{description}" class="form-control" id="description" name="description"
-                           placeholder="Введите описание товара">
-                </div>
-
-                <div class="form-group">
-                    <label>Цена</label>
-                    <input type="text" th:field="*{price}" class="form-control" id="price" name="price"
-                           placeholder="Введите цену">
-                    <p class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Принять</button>
-            </form>
-
+           <h1>Ошибка! Продукт не найден.</h1>
         </div>
     </div>
 </div>
@@ -79,5 +51,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
 </body>
+</html>

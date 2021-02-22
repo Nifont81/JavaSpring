@@ -35,36 +35,8 @@
 <div class="container">
     <div class="row py-2">
         <div class="col-12">
-            <a class="btn btn-primary" th:href="@{/products/new}">Добавить продукт</a>
+            <a class="btn btn-primary" th:href="@{/products/new}" >Добавить продукт</a>
         </div>
-
-        <!--        Форма для фильтра -->
-        <div class="col-12 mt-3">
-            <form class="form-inline" th:method="get">
-
-                <div class="form-group mb-2 mr-2">
-                    <label for="nameFilter" class="sr-only">Name Filter</label>
-                    <input type="text" class="form-control" id="nameFilter" th:value="${param.nameFilter}"
-                           name="nameFilter" placeholder="Фильтр по названию">
-                </div>
-
-                <div class="form-group mb-2 mr-2">
-                    <label for="minPrice" class="sr-only">Min Price</label>
-                    <input type="number" class="form-control" id="minPrice" th:value="${param.minPrice}"
-                           name="minPrice" placeholder="Минимальная цена">
-                </div>
-
-                <div class="form-group mb-2 mr-2">
-                    <label for="maxPrice" class="sr-only">Max Price</label>
-                    <input type="number" class="form-control" id="maxPrice" th:value="${param.maxPrice}"
-                           name="maxPrice" placeholder="Максимальная цена">
-<!--                    th:value="${param.maxPrice} чтоб сохранялись параметры при обновлении страницы-->
-                </div>
-
-                <button type="submit" class="btn btn-primary mb-2">Применить</button>
-            </form>
-        </div>
-
 
         <div class="col-12">
             <table class="table table-bordered my-2">
@@ -79,27 +51,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:unless="${products.empty}" th:each="product : ${products}">
+                <tr th:each="product : ${products}" >
                     <th th:text="${product.id}" scope="row">1</th>
                     <td th:text="${product.name}">Product1</td>
                     <td th:text="${product.description}">Description1</td>
                     <td th:text="${product.price}">100</td>
                     <td>
-                        <a class="btn btn-success" th:href="@{/products/{id} (id = ${product.id})}"><i
-                                class="fas fa-edit"></i></a>
+                        <a class="btn btn-success" th:href="@{/products/{id} (id = ${product.id})}"><i class="fas fa-edit"></i></a>
 
-                        <!--                        Фиктивная форма для отправки запроса "delete" (POST)-->
-                        <form class="d-inline" th:method="delete" th:action="@{/products/{id} (id = ${product.id})}">
+<!--                        Фиктивная форма для отправки запроса "delete" (POST)-->
+                        <form class="d-inline" th:method="delete" th:action="@{/products/{id} (id = ${product.id})}" >
                             <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                         </form>
 
                     </td>
                 </tr>
-
-                <tr th:if="${products.empty}">
-                    <td colspan="5">Нет данных</td>
-                </tr>
-
                 </tbody>
             </table>
         </div>

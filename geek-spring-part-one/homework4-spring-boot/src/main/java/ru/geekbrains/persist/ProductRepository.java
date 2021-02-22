@@ -1,48 +1,29 @@
 package ru.geekbrains.persist;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
-public class ProductRepository {
+public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
 
-    private Map<Long, Product> productMap = new ConcurrentHashMap<>();
+//    List<Product> findProductByNameLike(String nameFilter);
 
-    private AtomicLong identity = new AtomicLong(0);
+//    @Query("select p from Product p where p.name like concat('%',:nameFilter,'%')")
+//    List<Product> findProductByNameLike(@Param("nameFilter") String nameFilter);
+//
+//    @Query("select p from Product p where p.price between :minPrice and :maxPrice")
+//    List<Product> findProductByPriceIn(@Param("minPrice") double minPrice, @Param("maxPrice") double maxPrice);
 
-    @PostConstruct
-    public void init() {
-        this.insert(new Product("Клавиатура 101 кл.","Продукт 1",100));
-        this.insert(new Product("Товар2","Продукт 2",200));
-        this.insert(new Product("Товар3","Продукт 3",300));
-    }
-
-    public List<Product> findAll() {
-        return new ArrayList<>(productMap.values());
-    }
-
-    public Product findById(long id) {
-        return productMap.get(id);
-    }
-
-    public void insert(Product product) {
-        long id = identity.incrementAndGet();
-        product.setId(id);
-        productMap.put(id, product);
-    }
-
-    public void update(Product product) {
-        productMap.put(product.getId(), product);
-    }
-
-    public void delete(long id) {
-        productMap.remove(id);
-    }
-
+    @Query("select p from Product p where " +
+            "(p.name like :nameFilter or :nameFilter is null) and " +
+            "(p.price >= :minPrice or :minPrice is null) and " +
+            "(p.price <= :maxPrice or :maxPrice is null)")
+    List<Product> findWithFilter(@Param("nameFilter") String nameFilter,
+                                 @Param("minPrice") Double minPrice,
+                                 @Param("maxPrice") Double maxPrice);
 }
