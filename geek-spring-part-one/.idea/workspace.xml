@@ -131,6 +131,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Homework4SpringBootApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="homework4-spring-boot" />
       <extension name="coverage">
@@ -349,6 +360,8 @@
       <workItem from="1613809950205" duration="1358000" />
       <workItem from="1613811372714" duration="7495000" />
       <workItem from="1613832268164" duration="10713000" />
+      <workItem from="1613933918239" duration="7929000" />
+      <workItem from="1613996497715" duration="6764000" />
     </task>
     <servers />
   </component>

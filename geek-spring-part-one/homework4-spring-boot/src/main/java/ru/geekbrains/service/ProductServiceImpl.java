@@ -1,6 +1,9 @@
 package ru.geekbrains.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,7 +11,6 @@ import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.persist.ProductSpecification;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -41,7 +43,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductDTO> findWithFilter(String nameFilter, Double minPrice, Double maxPrice) {
+    public Page<ProductDTO> findWithFilter(String nameFilter, Double minPrice, Double maxPrice,
+                                           Integer page, Integer size, String sortBy) {
 
         Specification<Product> specification = Specification.where(null);
 
@@ -57,9 +60,9 @@ public class ProductServiceImpl implements ProductService{
             specification = specification.and(ProductSpecification.maxPrice(maxPrice));
         }
 
-        return productRepository.findAll(specification).stream()
-                .map(ProductDTO::new)
-                .collect(Collectors.toList());
+        return productRepository.findAll(specification, PageRequest.of(page, size,
+                Sort.Direction.ASC, sortBy))
+                .map(ProductDTO::new);
 
 //        return productRepository.findWithFilter(nameFilter, minPrice, maxPrice).stream()
 //                .map(ProductDTO::new)

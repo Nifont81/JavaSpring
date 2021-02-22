@@ -3,6 +3,7 @@ package ru.geekbrains.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ import java.util.Optional;
 @RequestMapping("/products")
 public class ProductController {
 
+    private final int SIZE_OF_PAGE = 3;
+
     private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     private final ProductService productService;
@@ -32,15 +35,24 @@ public class ProductController {
     public String listPage(Model model,
                            @RequestParam("nameFilter") Optional<String> nameFilter,
                            @RequestParam("minPrice") Optional<Double> minPrice,
-                           @RequestParam("maxPrice") Optional<Double> maxPrice) {
+                           @RequestParam("maxPrice") Optional<Double> maxPrice,
+                           @RequestParam("page") Optional<Integer> page,
+                           @RequestParam("size") Optional<Integer> size,
+                           @RequestParam("sortBy") Optional<String> sortBy) {
 
         logger.info("Страница списка запрошена");
 
-        model.addAttribute("products", productService.findWithFilter(
+        Page<ProductDTO> productDTOPage = productService.findWithFilter(
                 nameFilter.filter(s -> !s.isBlank()).orElse(null),
                 minPrice.orElse(null),
-                maxPrice.orElse(null))
+                maxPrice.orElse(null),
+                page.orElse(1) - 1,
+                size.orElse(SIZE_OF_PAGE),
+                sortBy.filter(s -> !s.isBlank()).orElse("name")
         );
+        // нумерация страниц page начинается с 0: page.orElse(1) - 1
+
+        model.addAttribute("products", productDTOPage);
 
         return "products";
     }
