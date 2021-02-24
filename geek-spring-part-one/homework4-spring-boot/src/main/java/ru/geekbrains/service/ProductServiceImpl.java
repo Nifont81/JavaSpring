@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
@@ -95,7 +95,9 @@ public class ProductServiceImpl implements ProductService{
     @Transactional
     @Override
     public void save(ProductDTO productDTO) {
-        productRepository.save(new Product(productDTO));
+        Product product = new Product(productDTO);
+        productRepository.save(product);
+        if (productDTO.getId() == null) productDTO.setId(product.getId());
     }
 
     @Transactional

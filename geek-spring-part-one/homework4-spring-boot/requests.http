@@ -1,0 +1,34 @@
+GET http://localhost:8080/spring-mvc-app/api/v1/products/all
+
+###
+
+GET http://localhost:8080/spring-mvc-app/api/v1/products/4
+
+###
+
+POST http://localhost:8080/spring-mvc-app/api/v1/products
+Content-Type: application/json
+
+{"name":"SDD",
+"description":"520 GB",
+"price":5400
+}
+
+###
+
+PUT http://localhost:8080/spring-mvc-app/api/v1/products
+Content-Type: application/json
+
+{"id": 25,
+  "name":"Error",
+  "description":"520 GB",
+  "price":3400
+}
+
+###
+
+DELETE http://localhost:8080/spring-mvc-app/api/v1/products/12
+
+
+
+

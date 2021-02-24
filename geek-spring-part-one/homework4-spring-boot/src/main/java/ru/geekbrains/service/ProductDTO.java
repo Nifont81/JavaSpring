@@ -1,5 +1,6 @@
 package ru.geekbrains.service;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ru.geekbrains.persist.Product;
 
 import javax.validation.constraints.Min;
@@ -10,6 +11,7 @@ import javax.validation.constraints.Size;
 
 public class ProductDTO {
 
+    //@JsonIgnore
     private Long id;
 
     @Size(min = 3, max = 100)

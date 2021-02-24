@@ -37,17 +37,18 @@ public class ProductController {
                            @RequestParam("minPrice") Optional<Double> minPrice,
                            @RequestParam("maxPrice") Optional<Double> maxPrice,
                            @RequestParam("page") Optional<Integer> page,
-                           @RequestParam("size") Optional<Integer> size,
                            @RequestParam("sortBy") Optional<String> sortBy) {
 
         logger.info("Страница списка запрошена");
 
+        //session.setAttribute();
+
         Page<ProductDTO> productDTOPage = productService.findWithFilter(
-                nameFilter.filter(s -> !s.isBlank()).orElse(null),
+                nameFilter.orElse(null),
                 minPrice.orElse(null),
                 maxPrice.orElse(null),
                 page.orElse(1) - 1,
-                size.orElse(SIZE_OF_PAGE),
+                SIZE_OF_PAGE,
                 sortBy.filter(s -> !s.isBlank()).orElse("name")
         );
         // нумерация страниц page начинается с 0: page.orElse(1) - 1

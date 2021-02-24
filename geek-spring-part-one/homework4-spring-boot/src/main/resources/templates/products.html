@@ -45,28 +45,10 @@
             <table class="table table-bordered my-2">
                 <thead>
                 <tr>
-                    <th scope="col">
-                        <a th:href="@{/products(page=${products.number}+1, size=${products.size}, nameFilter=${param.nameFilter},
-                                minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortBy='Id' )}">
-                            <i class="fa fa-sort-down">Id</i> </a>
-                    </th>
-
-                    <th scope="col">
-                        <a th:href="@{/products(page=${products.number}+1, size=${products.size}, nameFilter=${param.nameFilter},
-                                minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortBy='name' )}">
-                            <i class="fa fa-sort-down">Наименование</i> </a>
-                    </th>
-                    <th scope="col">
-                        <a th:href="@{/products(page=${products.number}+1, size=${products.size}, nameFilter=${param.nameFilter},
-                                minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortBy='description' )}">
-                            <i class="fa fa-sort-down">Описание</i> </a>
-                    </th>
-                    <th scope="col">
-                        <a th:href="@{/products(page=${products.number}+1, size=${products.size}, nameFilter=${param.nameFilter},
-                                minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortBy='price' )}">
-                            <i class="fa fa-sort-down">Цена</i> </a>
-                    </th>
-
+                    <th scope="col" th:replace="fragments/sort_header :: sort_header ('Id', 'id')"/>
+                    <th scope="col" th:replace="fragments/sort_header :: sort_header ('Наименование', 'name')"/>
+                    <th scope="col" th:replace="fragments/sort_header :: sort_header ('Описание', 'description')"/>
+                    <th scope="col" th:replace="fragments/sort_header :: sort_header ('Цена', 'price')"/>
                     <th scope="col">Действия</th>
                 </tr>
                 </thead>
@@ -94,16 +76,14 @@
 
                 </tbody>
             </table>
-        </div>
 
-        <div class="col-12">
             <nav aria-label="...">
                 <ul class="pagination">
 
                     <li class="page-item"
                         th:classappend="${products.number<1} ? 'disabled'">
                         <a class="page-link"
-                           th:href="@{/products(page=${products.number}, size=${products.size}, nameFilter=${param.nameFilter},
+                           th:href="@{/products(page=${products.number}, nameFilter=${param.nameFilter},
                                 minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortBy=${param.sortBy} )}"
                            tabindex="-1">Назад</a>
                         <!--                        В ${products.number} значение меньше на 1, поэтому просто присваиваем, для перехода назад-->
@@ -119,7 +99,7 @@
 
                         <a th:text="${num}"
 
-                           th:href="@{/products(page=${num}, size=${products.size}, nameFilter=${param.nameFilter},
+                           th:href="@{/products(page=${num}, nameFilter=${param.nameFilter},
                                 minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortBy=${param.sortBy}   )}"
 
                            class="page-link">1 <span th:if="${num == products.number + 1}"
@@ -129,7 +109,7 @@
                     <li class="page-item"
                         th:classappend="${products.number>=products.getTotalPages()-1} ? 'disabled'">
                         <a class="page-link"
-                           th:href="@{/products(page=${products.number}+2, size=${products.size}, nameFilter=${param.nameFilter},
+                           th:href="@{/products(page=${products.number}+2, nameFilter=${param.nameFilter},
                                 minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortBy=${param.sortBy}  )}"
                         >Вперед</a>
                     </li>
