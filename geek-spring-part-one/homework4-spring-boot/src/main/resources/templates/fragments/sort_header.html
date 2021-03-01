@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th scope="col" th:fragment="sort_header (header, column)">
+    <a th:href="@{/products(page=${products.number}+1, nameFilter=${param.nameFilter},
+                                minPrice=${param.minPrice}, maxPrice=${param.maxPrice}, sortBy=${column} )}">
+        <i class="fa fa-sort-down">[[${header}]]</i> </a>
+</th>
+
+</html>
