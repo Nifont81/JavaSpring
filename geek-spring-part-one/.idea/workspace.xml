@@ -70,6 +70,9 @@
       <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src" />
       <recent name="D:\IdeaProjects\geek-spring-part-one" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.geekbrains" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ru.geekbrains.persist" />
       <recent name="ru.geekbrains" />
@@ -78,6 +81,68 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/trash/99" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/trash/1" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PUT" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/trash" />
+          <option name="urlPath" value="" />
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="userId" />
+                <option name="value" value="1" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="productId" />
+                <option name="value" value="19" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PUT" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/trash/1 2" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="PUT" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/trash/1,2" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/trash/2" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/products/4" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="DELETE" />
           <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/products/12" />
@@ -256,13 +321,6 @@
         </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/products/4" />
-          <option name="urlPath" value="" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
           <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/products/2" />
           <option name="urlPath" value="" />
           <option name="textToSend" value="" />
@@ -299,19 +357,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="requests#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" runType="Run single request">
-      <method v="2" />
+    <configuration name="testTrash" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.testTrash" />
+      <module name="homework4-spring-boot" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.geekbrains.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="requests#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="requests#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="3" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="requests#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="4" runType="Run single request">
-      <method v="2" />
-    </configuration>
     <configuration name="requests#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="5" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requests#6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requests#7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="7" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -462,25 +544,25 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="HTTP Request.requests#1" />
+      <item itemvalue="Application.testTrash" />
+      <item itemvalue="HTTP Request.requests#2" />
+      <item itemvalue="HTTP Request.requests#5" />
       <item itemvalue="Maven.lesson-04-spring-boot [clean, install]" />
       <item itemvalue="Maven.lesson-01-servlet-api [clean,install...]" />
       <item itemvalue="Maven.lesson-03-spring-mvc [clean,install...]" />
       <item itemvalue="Maven.HomeWork3" />
       <item itemvalue="Spring Boot.Homework4SpringBootApplication" />
       <item itemvalue="Spring Boot.Lesson06SpringHibernateApplication" />
-      <item itemvalue="HTTP Request.requests#2" />
-      <item itemvalue="HTTP Request.requests#3" />
-      <item itemvalue="HTTP Request.requests#4" />
-      <item itemvalue="HTTP Request.requests#5" />
+      <item itemvalue="HTTP Request.requests#6" />
+      <item itemvalue="HTTP Request.requests#7" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.requests#5" />
-        <item itemvalue="HTTP Request.requests#4" />
-        <item itemvalue="HTTP Request.requests#3" />
+        <item itemvalue="HTTP Request.requests#6" />
+        <item itemvalue="HTTP Request.requests#7" />
         <item itemvalue="HTTP Request.requests#2" />
-        <item itemvalue="HTTP Request.requests#1" />
+        <item itemvalue="Application.testTrash" />
+        <item itemvalue="HTTP Request.requests#5" />
       </list>
     </recent_temporary>
   </component>
@@ -533,6 +615,10 @@
       <workItem from="1614067206916" duration="9164000" />
       <workItem from="1614108212945" duration="1058000" />
       <workItem from="1614151170539" duration="3100000" />
+      <workItem from="1614267116569" duration="3000" />
+      <workItem from="1614518469251" duration="7415000" />
+      <workItem from="1614585898823" duration="3152000" />
+      <workItem from="1614592961619" duration="5149000" />
     </task>
     <servers />
   </component>
