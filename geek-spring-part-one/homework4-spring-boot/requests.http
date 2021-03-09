@@ -6,12 +6,31 @@ GET http://localhost:8080/spring-mvc-app/api/v1/products/4
 
 ###
 
+GET http://localhost:8080/spring-mvc-app/api/v1/user/3
+Authorization: Basic admin 111
+
+###
+
+POST http://localhost:8080/spring-mvc-app/api/v1/user
+Content-Type: application/json
+Authorization: Basic root 111
+
+{
+  "username": "user111",
+  "password": "222",
+  "email": "xxx@outlook.com",
+  "age": 33
+}
+
+###
+
 POST http://localhost:8080/spring-mvc-app/api/v1/products
 Content-Type: application/json
 
-{"name":"SDD",
-"description":"520 GB",
-"price":5400
+{
+  "name": "SDD",
+  "description": "520 GB",
+  "price": 5400
 }
 
 ###
@@ -19,10 +38,11 @@ Content-Type: application/json
 PUT http://localhost:8080/spring-mvc-app/api/v1/products
 Content-Type: application/json
 
-{"id": 25,
-  "name":"Error",
-  "description":"520 GB",
-  "price":3400
+{
+  "id": 25,
+  "name": "Error",
+  "description": "520 GB",
+  "price": 3400
 }
 
 ###

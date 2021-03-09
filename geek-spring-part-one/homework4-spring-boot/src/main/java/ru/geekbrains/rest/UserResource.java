@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.controller.BadRequestException;
 import ru.geekbrains.controller.NotFoundException;
@@ -34,6 +35,7 @@ public class UserResource {
         this.userService = userService;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping(path = "/all", produces = "application/json")
     public List<UserRepr> findAll() {
         return userService.findAll().stream()
@@ -41,6 +43,7 @@ public class UserResource {
                 .collect(Collectors.toList());
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping(path = "/{id}")
     public UserRepr findById(@PathVariable("id") Long id) {
         UserRepr userRepr = userService.findById(id)
@@ -49,6 +52,7 @@ public class UserResource {
         return userRepr;
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("filter")
     public Page<UserRepr> listPage(
                            @RequestParam("usernameFilter") Optional<String> usernameFilter,
@@ -68,6 +72,7 @@ public class UserResource {
         );
     }
 
+    @Secured("ROLE_SUPERADMIN")
     @PostMapping(consumes = "application/json")
     public UserRepr create(@RequestBody UserRepr userRepr) {
         if (userRepr.getId() != null) {
@@ -77,6 +82,7 @@ public class UserResource {
         return userRepr;
     }
 
+    @Secured("ROLE_SUPERADMIN")
     @PutMapping(consumes = "application/json")
     public void update(@RequestBody UserRepr userRepr) {
         if (userRepr.getId() == null) {
@@ -85,6 +91,7 @@ public class UserResource {
         userService.save(userRepr);
     }
 
+    @Secured("ROLE_SUPERADMIN")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Long id) {
         userService.delete(id);

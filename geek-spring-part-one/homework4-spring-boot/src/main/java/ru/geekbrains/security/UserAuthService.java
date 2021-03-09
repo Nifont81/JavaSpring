@@ -21,7 +21,19 @@ public class UserAuthService implements UserDetailsService {
     public UserAuthService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+    /*
+         Authority - разрешение на некое действие
+         User (VIEW_ALL, VIEW_SINGLE, EDIT, DELETE)
 
+         ROLE_SUPERADMIN -> (VIEW_ALL, VIEW_SINGLE, EDIT, DELETE)
+         ROLE_ADMIN -> (VIEW_ALL, VIEW_SINGLE)
+
+         ROLE -> new SimpleGrantedAuthority("ROLE_ADMIN"); -> hasRole('ADMIN') -> hasAuthority('ROLE_ADMIN')
+
+         new SimpleGrantedAuthority("ROLE_ADMIN"); -> hasRole('ADMIN')
+         new SimpleGrantedAuthority("VIEW_ALL"); -> hasAuthority('VIEW_ALL')
+         new SimpleGrantedAuthority("VIEW_SINGLE"); -> hasAuthority('VIEW_SINGLE')
+      */
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
