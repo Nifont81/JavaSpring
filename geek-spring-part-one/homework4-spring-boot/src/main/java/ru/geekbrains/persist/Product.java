@@ -3,6 +3,7 @@ package ru.geekbrains.persist;
 import ru.geekbrains.service.ProductDTO;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "products")
@@ -12,7 +13,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false) // unique = true
+    @NotBlank
+    @Column
     private String name;
 
     @Column

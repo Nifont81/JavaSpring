@@ -1,15 +1,17 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="fragments/head.html::head"/>
 
 <body>
 
-<nav th:replace="fragments/head.html::navbar"/>
+<nav th:replace="fragments/head.html::navbar('Products')"/>
 
 <div class="container">
     <div class="row py-2">
-        <div class="col-12">
+
+        <div sec:authorize="hasRole('ADMIN')" class="col-12">
             <a class="btn btn-primary" th:href="@{/products/new}">Добавить продукт</a>
         </div>
 
@@ -48,7 +50,7 @@
                     <th scope="col" th:replace="fragments/sort_header :: sort_header ('Id', 'id')"/>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header ('Наименование', 'name')"/>
                     <th scope="col" th:replace="fragments/sort_header :: sort_header ('Описание', 'description')"/>
-                    <th scope="col" th:replace="fragments/sort_header :: sort_header ('Цена', 'price')"/>
+                    <th sec:authorize="hasRole('ADMIN')" scope="col" th:replace="fragments/sort_header :: sort_header ('Цена', 'price')"/>
                     <th scope="col">Действия</th>
                 </tr>
                 </thead>
@@ -58,7 +60,7 @@
                     <td th:text="${product.name}">Product1</td>
                     <td th:text="${product.description}">Description1</td>
                     <td th:text="${product.price}">100</td>
-                    <td>
+                    <td sec:authorize="hasRole('ADMIN')">
                         <a class="btn btn-success" th:href="@{/products/{id} (id = ${product.id})}"><i
                                 class="fas fa-edit"></i></a>
 
