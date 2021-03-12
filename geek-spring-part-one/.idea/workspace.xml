@@ -67,6 +67,7 @@
       <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\java\ru\geekbrains\rest" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\resources\templates" />
       <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src\main\resources\templates\fragments" />
       <recent name="D:\IdeaProjects\geek-spring-part-one\homework4-spring-boot\src" />
       <recent name="D:\IdeaProjects\geek-spring-part-one" />
@@ -82,6 +83,58 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/user/3" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/user/3" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;username&quot;: &quot;user111&quot;,&#10;  &quot;password&quot;: &quot;222&quot;,&#10;  &quot;email&quot;: &quot;xxx@outlook.com&quot;,&#10;  &quot;age&quot;: 33&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/user" />
+          <option name="urlPath" value="" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;&quot;username&quot;:&quot;user111&quot;,&#10;&quot;password&quot;:&quot;222&quot;,&#10;&quot;email&quot;:&quot;xxx@outlook.com&quot;,&#10;&quot;age&quot;:33&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/user/4" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/user/4" />
+          <option name="urlPath" value="" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="GET" />
           <option name="urlBase" value="http://localhost:8080/spring-mvc-app/api/v1/trash/99" />
@@ -344,7 +397,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.lesson-04-spring-boot [clean, install]">
+  <component name="RunManager" selected="Spring Boot.Homework4SpringBootApplication">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -358,16 +411,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="testTrash" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.geekbrains.testTrash" />
-      <module name="homework4-spring-boot" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.geekbrains.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -375,7 +425,10 @@
     <configuration name="requests#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="requests#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="5" runType="Run single request">
+    <configuration name="requests#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="requests#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="4" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="requests#6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/homework4-spring-boot/requests.http" index="6" runType="Run single request">
@@ -532,9 +585,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.testTrash" />
       <item itemvalue="HTTP Request.requests#2" />
-      <item itemvalue="HTTP Request.requests#5" />
       <item itemvalue="HTTP Request.requests#6" />
       <item itemvalue="HTTP Request.requests#7" />
       <item itemvalue="Maven.lesson-04-spring-boot [clean, install]" />
@@ -543,14 +594,16 @@
       <item itemvalue="Maven.HomeWork3" />
       <item itemvalue="Spring Boot.Homework4SpringBootApplication" />
       <item itemvalue="Spring Boot.Lesson06SpringHibernateApplication" />
+      <item itemvalue="HTTP Request.requests#3" />
+      <item itemvalue="HTTP Request.requests#4" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.requests#3" />
+        <item itemvalue="HTTP Request.requests#4" />
         <item itemvalue="HTTP Request.requests#6" />
         <item itemvalue="HTTP Request.requests#7" />
         <item itemvalue="HTTP Request.requests#2" />
-        <item itemvalue="Application.testTrash" />
-        <item itemvalue="HTTP Request.requests#5" />
       </list>
     </recent_temporary>
   </component>
@@ -614,7 +667,11 @@
       <workItem from="1614882511601" duration="1802000" />
       <workItem from="1614884585244" duration="6426000" />
       <workItem from="1614891583013" duration="868000" />
-      <workItem from="1614927517679" duration="3087000" />
+      <workItem from="1614927517679" duration="3714000" />
+      <workItem from="1614967619732" duration="2885000" />
+      <workItem from="1615130168415" duration="7375000" />
+      <workItem from="1615196138760" duration="304000" />
+      <workItem from="1615196455651" duration="3021000" />
     </task>
     <servers />
   </component>
